@@ -1,0 +1,22 @@
+h1{
+    color:black;
+    text-shadow: rgb(123, 232, 210) 1px 0 10px;
+}
+h2{
+    background: linear-gradient(0.25turn,rgb(82, 165, 140), white);
+}
+a{
+    font-weight: bold;
+}
+a:link {
+    color:rgb(149, 48, 48)
+}
+a:visited {
+    color:rgb(156, 121, 16)
+}
+a:hover {
+    color:blue;
+}
+dt h3{
+    background: linear-gradient(0.25turn,rgb(168, 213, 186), white);
+}

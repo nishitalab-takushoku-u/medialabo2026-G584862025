@@ -1,0 +1,11 @@
+h2{
+    color: rgb(6, 6, 70);
+    border-bottom: groove rgb(206, 75, 206);
+}
+ul{
+    color:rgb(62, 62, 78);
+    list-style-type: none;
+}
+img{
+    float: right;
+}
