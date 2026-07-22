@@ -1,11 +1,11 @@
-h2{
-    color: rgb(6, 6, 70);
-    border-bottom: groove rgb(206, 75, 206);
+h1{
+    color:black;
+    background: linear-gradient(0.25turn,rgb(82, 165, 140), white);
 }
-ul{
-    color:rgb(62, 62, 78);
-    list-style-type: none;
+#result p {
+    font-size: 18px;
 }
-img{
-    float: right;
+#keyList p {
+    font-size: 10px;
+    margin: 2px;
 }

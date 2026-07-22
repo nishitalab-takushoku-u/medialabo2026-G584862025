@@ -15,22 +15,81 @@ function print(data) {
 
 // 課題5-1 の関数 printDom() はここに記述すること
 function printDom(data) {
+  let oldResult = document.querySelector('#result');
+  if (oldResult) {
+    oldResult.remove();
+  }
+  
+  let result = document.createElement('div');
+  result.id = 'result';
+  document.body.insertAdjacentElement('beforeend', result);
 
+  let title = document.createElement('h2');
+  title.textContent = '検索結果';
+  result.insertAdjacentElement('beforeend', title);
+
+  let p = document.createElement('p');
+  p.textContent = '経度：' + data.coord.lon;
+  result.insertAdjacentElement('beforeend',p);
+
+  p= document.createElement('p');
+  p.textContent = '緯度：' +data.coord.lat;
+  result.insertAdjacentElement('beforeend',p);
+
+  p = document.createElement('p');
+  p.textContent = '天気：' +data.weather[0].description;
+  result.insertAdjacentElement('beforeend', p);
+
+  p = document.createElement('p');
+  p.textContent ='最低気温：' + data.main.temp_min;
+  result.insertAdjacentElement('beforeend', p);
+
+  p = document.createElement('p');
+  p.textContent ='最高気温：' + data.main.temp_max;
+  result.insertAdjacentElement('beforeend', p);
+
+  p = document.createElement('p');
+  p.textContent =  '湿度：' + data.main.humidity;
+  result.insertAdjacentElement('beforeend', p);
+
+  p = document.createElement('p');
+  p.textContent ='風速：' + data.wind.speed;
+  result.insertAdjacentElement('beforeend', p);
+
+  p = document.createElement('p');
+  p.textContent ='風向：' +  data.wind.deg;
+  result.insertAdjacentElement('beforeend', p);
+
+  p = document.createElement('p');
+  p.textContent = '都市名：' +data.name;
+  result.insertAdjacentElement('beforeend', p);
 }
 
 // 課題6-1 のイベントハンドラ登録処理は以下に記述
-
-
+let b = document.querySelector('#searchButton');
+b.addEventListener('click', sendRequest);
 
 
 // 課題6-1 のイベントハンドラ sendRequest() の定義
 function sendRequest() {
-
+  let id = document.querySelector('#search').value;
+  let url = 'https://www.nishita-lab.org/web-contents/jsons/openweather/' + id + '.json';
+  
+  axios.get(url)
+    .then(showResult)
+    .catch(showError)
+    .then(finish);
 }
 
 // 課題6-1: 通信が成功した時の処理は以下に記述
 function showResult(resp) {
+  let data = resp.data;
 
+  if (typeof data === 'string') {
+    data = JSON.parse(data);
+  }
+
+  printDom(data);
 }
 
 // 課題6-1: 通信エラーが発生した時の処理
