@@ -29,7 +29,10 @@ function hantei() {
       document.querySelector('#result').textContent = 'まちがい. 残念でした答えは'+ kotae + 'です. ';
     } else if (yoso<kotae){
       document.querySelector('#result').textContent = 'まちがい. 答えはもっと大きいですよ';
-    } else {
+    } else if (kaisu>3){
+      document.querySelector('#result').textContent = '数当てゲームは終了しました。'
+    }
+    else {
       document.querySelector('#result').textContent = 'まちがい. 答えはもっと小さいですよ'
     }
   }
